@@ -3,3 +3,4 @@ matplotlib
 ads
 synphot
 git+git://github.com/astropy/astroquery.git@master#egg=astroquery
+pandas
