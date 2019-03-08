@@ -70,8 +70,8 @@ options in different cases:
     >>> print(orb)  # doctest: +SKIP
     <QTable length=1>
        a       e       i     argper   node    epoch   true_anom
-       AU             deg     deg     deg       d        deg   
-    float64 float64 float64 float64 float64  float64   float64 
+       AU             deg     deg     deg       d        deg
+    float64 float64 float64 float64 float64  float64   float64
     ------- ------- ------- ------- ------- --------- ---------
       1.234  0.1234   12.34   123.4    45.2 2451200.5      23.1
 
@@ -102,11 +102,11 @@ options in different cases:
     >>> dec = [-12.42123, -12.41562, -12.40435]*u.deg
     >>> epoch = (2451523.5 + array([0.1234, 0.2345, 0.3525]))*u.d
     >>> obs = Ephem.from_array([ra, dec, epoch], names=['ra', 'dec', 't'])
-    >>> print(obs)  
+    >>> print(obs)
     <QTable length=3>
-        ra       dec         t      
-       deg       deg         d      
-     float64   float64    float64   
+        ra       dec         t
+       deg       deg         d
+     float64   float64    float64
     --------- --------- ------------
     10.223423 -12.42123 2451523.6234
     10.233453 -12.41562 2451523.7345
@@ -180,8 +180,8 @@ Just like in any `~astropy.table.Table` or `~astropy.table.QTable` object, you c
 
     >>> print(obs['ra', 'dec']) # doctest: +SKIP
     <QTable length=3>
-	ra       dec   
-       deg       deg   
+	ra       dec
+       deg       deg
     --------- ---------
     10.223423 -12.42123
     10.233453 -12.41562
@@ -221,9 +221,9 @@ object:
     5
     >>> print(obs)
     <QTable length=5>
-	ra       dec          t      
-       deg       deg          d      
-     float64   float64     float64   
+	ra       dec          t
+       deg       deg          d
+     float64   float64     float64
     --------- --------- -------------
     10.223423 -12.42123  2451523.6234
     10.233453 -12.41562  2451523.7345
@@ -238,8 +238,8 @@ or if you want to add a column to your object:
     >>> print(obs)
     <QTable length=5>
 	ra       dec          t       filter
-       deg       deg          d             
-     float64   float64     float64     str1 
+       deg       deg          d
+     float64   float64     float64     str1
     --------- --------- ------------- ------
     10.223423 -12.42123  2451523.6234      V
     10.233453 -12.41562  2451523.7345      V
@@ -391,11 +391,11 @@ Mauna Kea Observatory (IAU observatory code ``568``) from the `JPL Horizons serv
     >>> eph = Ephem.from_horizons('Ceres',
     ...                           location='568',
     ...                           epochs=epoch)
-    >>> print(eph) 
+    >>> print(eph)
     <QTable masked=True length=1>
     targetname       datetime_str          datetime_jd    ...  PABLat timescale
-						d         ...   deg            
-       str7             str24                float64      ... float64    str3  
+						d         ...   deg
+       str7             str24                float64      ... float64    str3
     ---------- ------------------------ ----------------- ... ------- ---------
        1 Ceres 2018-Aug-03 14:20:00.000 2458334.097222222 ...  9.3473       UTC
 
@@ -432,8 +432,8 @@ full flexibility of the latter function:
     >>> print(eph)
     <QTable masked=True length=26>
     targetname    datetime_str      datetime_jd    ...  PABLon   PABLat timescale
-					 d         ...   deg      deg            
-       str7          str17            float64      ... float64  float64    str3  
+					 d         ...   deg      deg
+       str7          str17            float64      ... float64  float64    str3
     ---------- ----------------- ----------------- ... -------- ------- ---------
        1 Ceres 2018-Aug-03 14:20 2458334.097222222 ...  171.275  9.3473       UTC
        1 Ceres 2018-Aug-03 14:30 2458334.104166667 ... 171.2774  9.3472       UTC
@@ -461,8 +461,8 @@ concatenate queries for a number of objects:
     >>> print(eph)
     <QTable masked=True length=4>
 	    targetname               datetime_str       ...  PABLat  timescale
-							...   deg             
-	      str26                     str24           ... float64     str3  
+							...   deg
+	      str26                     str24           ... float64     str3
     -------------------------- ------------------------ ... -------- ---------
 		       1 Ceres 2018-Aug-03 14:20:00.000 ...   9.3473       UTC
 		      2 Pallas 2018-Aug-03 14:20:00.000 ... -20.1396       UTC
@@ -486,8 +486,8 @@ ephemerides from the Minor Planet Center:
     >>> print(eph)
     <QTable length=5>
 	      Date          timescale ... Moon distance Moon altitude
-				      ...      deg           deg     
-	     object            str3   ...    float64       float64   
+				      ...      deg           deg
+	     object            str3   ...    float64       float64
     ----------------------- --------- ... ------------- -------------
     2018-10-22 00:00:00.000       UTC ...          28.0         -33.0
     2018-10-23 00:00:00.000       UTC ...          41.0         -41.0
@@ -507,12 +507,12 @@ from the Discovery Channel Telescope:
      >>> from astropy.time import Time
      >>> epochs = Time.now().jd + np.arange(0, 10, 1/24)
      >>> ceres = Orbit.from_horizons('1')
-     >>> eph = Ephem.from_oo(ceres, epochs, 'G37') # doctest: +SKIP 
-     >>> print(eph) # doctest: +SKIP 
+     >>> eph = Ephem.from_oo(ceres, epochs, 'G37') # doctest: +SKIP
+     >>> print(eph) # doctest: +SKIP
      <QTable length=240>
-     targetname       epoch        ...           obsz               trueanom    
-			d          ...            AU                  deg       
-	str7         float64       ...         float64              float64     
+     targetname       epoch        ...           obsz               trueanom
+			d          ...            AU                  deg
+	str7         float64       ...         float64              float64
      ---------- ------------------ ... ----------------------- -----------------
 	1 Ceres 2458519.2878717002 ...   4.886414464166933e-06 68.07980642088688
 	1 Ceres 2458519.3295383668 ...  2.3814767035612583e-06  68.0893160393968
@@ -527,7 +527,7 @@ from the Discovery Channel Telescope:
 	1 Ceres 2458529.1628717002 ...  1.4786143903738891e-05 70.32753120140761
 	1 Ceres 2458529.2045383668 ...  1.4213398342149963e-05 70.33698944971509
 	1 Ceres 2458529.2462050337 ...  1.2724269065650384e-05 70.34644748067402
-     
+
 The properties computed by pyoorb and listed in the resulting table
 are defined in the `pyoorb documentation
 <https://github.com/oorb/oorb/tree/master/python>`_. Note that this function requires pyoorb to be installed, which is not a requirement for `sbpy`.
@@ -546,8 +546,8 @@ body osculating elements from the `JPL Horizons service
     >>> print(elem)  # doctest: +SKIP
     <QTable masked=True length=1>
     targetname datetime_jd ...         P         timescale
-		    d      ...         d                  
-       str7      float64   ...      float64         str2  
+		    d      ...         d
+       str7      float64   ...      float64         str2
     ---------- ----------- ... ----------------- ---------
        1 Ceres   2458252.5 ... 1681.218128428134        TT
     >>> print(elem.column_names)
@@ -567,8 +567,8 @@ orbital elements for a number of targets:
     >>> print(elem) # doctest: +SKIP
     <QTable length=2>
 	  targetname         datetime_jd    ...         P         timescale
-				  d         ...         d                  
-	    str21              float64      ...      float64         str2  
+				  d         ...         d
+	    str21              float64      ...      float64         str2
     --------------------- ----------------- ... ----------------- ---------
     3749 Balam (1982 BG1) 2458334.097222222 ... 1221.865723414031        TT
        312497 (2009 BR60) 2458334.097222222 ... 1221.776912893334        TT
@@ -586,12 +586,12 @@ In order to transform some current orbits to a state vector in
 cartesian coordinates, one could use the following code:
 
     >>> elem = Orbit.from_horizons(['Ceres', 'Pallas', 'Vesta'])
-    >>> statevec = elem.oo_transform('CART') # doctest: +SKIP 
+    >>> statevec = elem.oo_transform('CART') # doctest: +SKIP
     >>> print(statevec) # doctest: +SKIP
     <QTable length=3>
        id             x                   y           ...    H       G    timescale
-		      AU                  AU          ...   mag                    
-      str8         float64             float64        ... float64 float64    str2  
+		      AU                  AU          ...   mag
+      str8         float64             float64        ... float64 float64    str2
     -------- ------------------- -------------------- ... ------- ------- ---------
      1 Ceres -1.9673670927605356   -1.788869179608663 ...    3.34    0.12        TT
     2 Pallas  -2.354147777522819 -0.20413910825654025 ...    4.13    0.11        TT
@@ -608,12 +608,12 @@ orbit of Ceres back to year 2000:
 
     >>> elem = Orbit.from_horizons('Ceres')
     >>> epoch = Time('2000-01-01', format='iso')
-    >>> newelem = elem.oo_propagate(epoch) # doctest: +SKIP 
+    >>> newelem = elem.oo_propagate(epoch) # doctest: +SKIP
     >>> print(newelem) # doctest: +SKIP
     <QTable length=1>
        id           a                   e          ...    H       G    timescale
-		    AU                             ...   mag                    
-      str7       float64             float64       ... float64 float64    str3  
+		    AU                             ...   mag
+      str7       float64             float64       ... float64 float64    str3
     ------- ------------------ ------------------- ... ------- ------- ---------
     1 Ceres 2.7664942134894703 0.07837504303420217 ...    3.34    0.12       UTC
 
@@ -639,14 +639,14 @@ small number of asteroids:
     >>> print(phys['targetname', 'H', 'diameter']) # doctest: +SKIP
     <QTable length=3>
 	    targetname            H    diameter
-					  km   
-	      str26            float64 float64 
+					  km
+	      str26            float64 float64
     -------------------------- ------- --------
 		       1 Ceres    3.34    939.4
      12893 Mommert (1998 QS55)    13.9    5.214
     3552 Don Quixote (1983 SA)    12.9     19.0
 
-    
+
 Please note that the SBDB database is not complete with respect to
 physical properties and should be considered as a sparse dataset.
 
@@ -716,6 +716,25 @@ comparisons are made whenever possible:
     >>> sorted(comets, key=natural_sort_key)
     ['2P/Encke', '9P/Tempel 1', '10P/Tempel 2', '101P/Chernykh']
 
+How to use the DASTCOM5 Module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For using the DASTCOM5 Module, you have to first download the databse locally.
+That can be done by:
+
+    >>> from sbpy.utils import dastcom5
+    >>> dastcom5.download_dastcom5()
+
+After the database is downloaded, all the queries can be done easily.
+
+DASTCOM5 is a subset of Small Body Database provided by JPL, NASA.
+For querying the database, either name or record number for the object
+can be used.
+
+    >>> dastcom5.orbit_from_name('atira')
+    >>> dastcom5.orbit_from_record(900001)
+
+More information about the DASTCOM5 Database can be taken from it's README file.
 
 Reference/API
 -------------
