@@ -151,7 +151,7 @@ class Orbit(DataClass):
         Examples
         --------
         >>> from sbpy.data import Orbit
-        >>> orb = Orbit.from_dastcom5('atira')
+        >>> orb = Orbit.from_dastcom5('atira')  # doctest: +SKIP
 
         """
         dastcom5_dir = os.path.join(utils.dastcom5.SBPY_LOCAL_PATH, "dastcom5")
