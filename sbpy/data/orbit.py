@@ -20,6 +20,7 @@ from warnings import warn
 from ..bib import cite
 from ..exceptions import SbpyException
 from . import conf, DataClass, QueryError, TimeScaleWarning
+from .. import utils
 
 __all__ = ['Orbit', 'OrbitError', 'OpenOrbError']
 
@@ -179,6 +180,33 @@ class Orbit(DataClass):
         all_elem.remove_column('Tp_jd')
 
         return cls.from_table(all_elem)
+
+    @classmethod
+    def from_dastcom5(cls, name):
+        """Load orbital elements from the DASTCOM5 Database
+        (ftp://ssd.jpl.nasa.gov/pub/ssd/dastcom5.zip).
+
+        Parameters
+        ----------
+        name: str, mandatory
+            Name of NEO
+
+        Returns
+        -------
+        `~Orbit` object
+
+        Examples
+        --------
+        >>> from sbpy.data import Orbit
+        >>> orb = Orbit.from_dastcom5('atira')
+
+        """
+        dastcom5_dir = os.path.join(utils.dastcom5.SBPY_LOCAL_PATH, "dastcom5")
+        if not os.path.isdir(dastcom5_dir):
+            utils.dastcom5.download_dastcom5()
+
+        tb = utils.dastcom5.orbit_from_name(name=name)
+        return cls.from_table(tb)
 
     @classmethod
     @cite({'data source':
