@@ -17,19 +17,10 @@ from astroquery.mpc import MPC
 import astropy.units as u
 from warnings import warn
 
-<<<<<<< HEAD
 from ..bib import cite
 from ..exceptions import SbpyException
 from . import conf, DataClass, QueryError, TimeScaleWarning
-=======
-from .. import bib
-from . import conf, DataClass
-<<<<<<< HEAD
-from .. import utils
->>>>>>> Add a wrapper around dastcom5
-=======
 from . import utils
->>>>>>> 1dcc8d27707274233209d89766b959bd980746ee
 
 __all__ = ['Orbit', 'OrbitError', 'OpenOrbError']
 
@@ -314,6 +305,7 @@ class Orbit(DataClass):
 
         return cls.from_table(all_elem)
 
+    @classmethod
     def from_dastcom5(cls, name):
         """Load orbital elements from the DASTCOM5 Database
         (ftp://ssd.jpl.nasa.gov/pub/ssd/dastcom5.zip).
