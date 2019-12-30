@@ -24,8 +24,12 @@ from . import conf, DataClass, QueryError, TimeScaleWarning
 =======
 from .. import bib
 from . import conf, DataClass
+<<<<<<< HEAD
 from .. import utils
 >>>>>>> Add a wrapper around dastcom5
+=======
+from . import utils
+>>>>>>> 1dcc8d27707274233209d89766b959bd980746ee
 
 __all__ = ['Orbit', 'OrbitError', 'OpenOrbError']
 
@@ -193,6 +197,8 @@ class Orbit(DataClass):
     def from_mpc(cls, targetids, id_type=None, target_type=None, **kwargs):
         """Load latest orbital elements from the
         `Minor Planet Center <http://minorplanetcenter.net>`_.
+        Load orbital elements from the Minor Planet Center
+        (http://minorplanetcenter.net/).
 
         Parameters
         ----------
